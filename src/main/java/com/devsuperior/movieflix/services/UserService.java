@@ -35,6 +35,11 @@ public class UserService implements UserDetailsService {
 		return new UserDTO(entity);
 	}
 	
+	public UserDTO findByEmail(String email) {
+		User user = authService.authenticated();
+		return new UserDTO(user);
+	}
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = repository.findByEmail(username);
